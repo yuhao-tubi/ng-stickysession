@@ -34,3 +34,10 @@ At this point, Node.js will listen on both local ports 3000 and 4000, providing 
 
 ### Verify Sticky Session
 You can access localhost:8080 to verify the sticky session. Click the button and you will always trigger and receive message from specific node app, and you can clear the src_id cookie via Chrome devtool, then you may connect to another SSE service.
+
+<img width="691" alt="image" src="https://github.com/yuhao-tubi/ng-stickysession/assets/141899175/12636b4c-d187-4580-be19-183817cd791c">
+
+
+https://github.com/yuhao-tubi/ng-stickysession/assets/141899175/26b6a4ef-6c2d-4d90-b0ef-bc2ca5a91961
+
+
