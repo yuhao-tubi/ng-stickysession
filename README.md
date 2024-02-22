@@ -50,3 +50,8 @@ proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http
 ```
 
 After having these rules, if a server was shutdown, the subsequent requests would be transfer to another availiable upstream server with a new cookie key assigned, so the user client would stick to a new upstream server.The ongoing SSE connection would also be redirected.
+
+You can use the server files under `server-shutdown` to verify it like the following video example:
+
+https://github.com/yuhao-tubi/ng-stickysession/assets/141899175/4b409fde-ee02-4c6c-b201-80e28a7c888d
+
