@@ -64,7 +64,7 @@ app2.get('/events', (req, res) => {
 
 // Example route to trigger an event for all connected clients on app1
 app1.post('/trigger', (req, res) => {
-  const newData = { message: 'Hello World from app1!' };
+  const newData = { message: 'Hello this is SSE Server #1!' };
   sendEventsToAll(newData, clients1);
   console.log(`Trigger event for app1: ${JSON.stringify(newData)}`);
   console.log(`Clients size for app1: ${clients1.length}`);
@@ -73,7 +73,7 @@ app1.post('/trigger', (req, res) => {
 
 // Example route to trigger an event for all connected clients on app2
 app2.post('/trigger', (req, res) => {
-  const newData = { message: 'Hello World2 from app2!' };
+  const newData = { message: 'Hello, this is SSE Server #2!' };
   sendEventsToAll(newData, clients2);
   console.log(`Trigger event for app2: ${JSON.stringify(newData)}`);
   console.log(`Clients size for app2: ${clients2.length}`);
