@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSE Example</title>
+    <script>
+        // Function to initialize SSE connection and handle incoming messages
+        function initializeSSE(url, elementId) {
+            const source = new EventSource(url);
+            source.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                const element = document.getElementById(elementId);
+                element.innerHTML += data.message + '<br>';
+            };
+        }
+
+        // Function to trigger new messages on the server
+        function triggerMessage(url) {
+            fetch(url, { method: 'POST' });
+        }
+
+        window.onload = function() {
+            // Initialize SSE connections for both servers
+            initializeSSE('/events', 'messages');
+        };
+    </script>
+</head>
+<body>
+    <h2>Messages from Server</h2>
+    <div id="messages"></div>
+    <button onclick="triggerMessage('/trigger')">Trigger Message on Server</button>
+    <p>
+        you can clear the srv_id cookie by devtool and connect to another SSE server
+    </p>
+</body>
+</html>
