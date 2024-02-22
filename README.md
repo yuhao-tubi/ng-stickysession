@@ -41,3 +41,12 @@ You can access localhost:8080 to verify the sticky session. Click the button and
 https://github.com/yuhao-tubi/ng-stickysession/assets/141899175/26b6a4ef-6c2d-4d90-b0ef-bc2ca5a91961
 
 
+### Verify server shutdown and recovery
+A good question thanks to @Chun that what if the sticky target upstream server shutdown or restart, what would happen for stickied user or the SSE connection on the target server.
+
+I added some error proxy rule to nginx.conf:
+```
+proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+```
+
+After having these rules, if a server was shutdown, the subsequent requests would be transfer to another availiable upstream server with a new cookie key assigned, so the user client would stick to a new upstream server.The ongoing SSE connection would also be redirected.

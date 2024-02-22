@@ -1,4 +1,6 @@
 const express = require('express');
+const path = require('path');
+
 const app1 = express();
 const app2 = express();
 const port1 = 3000;
@@ -80,8 +82,8 @@ app2.post('/trigger', (req, res) => {
   res.status(204).end();
 });
 
-app1.use(express.static(__dirname));
-app2.use(express.static(__dirname));
+app1.use(express.static(path.resolve(__dirname, '../')));
+app2.use(express.static(path.resolve(__dirname, '../')));
 
 app1.listen(port1, () => {
   console.log(`App1 listening on port ${port1}`);
